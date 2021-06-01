@@ -1,10 +1,14 @@
 package gui;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.color.ICC_ColorSpace;
 import java.awt.event.MouseEvent;
+import java.awt.font.FontRenderContext;
+import java.awt.font.LineMetrics;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -142,6 +146,7 @@ public class CircularTimeLayer{
 	}
 	
 	public void paint(Graphics2D g2){
+
 		for(CircularTimeItem item : items)
 			if(item.state == State.NEUTRE)
 				item.paint(g2);
@@ -153,9 +158,49 @@ public class CircularTimeLayer{
 		
 		if(currentItem != null)
 			currentItem.paint(g2);
+		//afficheTexte(g2, "TEST", rank);
+	}
+	
+	private float[] createCoord(int rank, Rectangle2D box,  float width, float lineHeight, float ascent) {
+		float ret[] = {0,0};
+		if(rank < 3) {
+			ret[0] = (float)(box.getCenterX());
+			ret[1] = (float)(box.getY() + ascent  - lineHeight);
+		}else if(rank < 6) {
+			ret[0] = (float)(box.getMaxX() - width);
+			ret[1] = (float)(box.getMaxY() + ascent);
+		}else if(rank < 9) {
+			ret[0] = (float)(box.getMinX() - width);
+			ret[1] = (float)(box.getMaxY());
+		}else if(rank < 12) {
+			ret[0] = (float)(box.getMinX() - width);
+			ret[1] = (float)(box.getY());
+		}
+ 
+        return ret;
 	}
 
-
+	public void afficheTexte(Graphics2D g2, String texte, int rank){
+        Font f = new Font("Verdana Ref",Font.BOLD,12);
+        
+        Rectangle2D box = area.getBounds2D();
+        FontRenderContext frc = g2.getFontRenderContext();
+        Rectangle2D bounds = f.getStringBounds(texte,frc);
+        LineMetrics metrics = f.getLineMetrics(texte,frc);
+        float width = (float)bounds.getWidth(); 
+        float lineheight = metrics.getHeight(); 
+        float ascent = metrics.getAscent();     
+        
+        float[] coord = createCoord(rank, box, width, lineheight, ascent);
+        float x0 = coord[0];
+        float y0 = coord[1];
+        
+   
+        g2.setColor(CircularTimeItem.BLACK);
+        g2.setFont(f);
+        g2.drawString(texte,x0,y0);
+	}
+	
 	public State layerState(MouseEvent arg0){
 		currentItem = null;
 		for(CircularTimeItem item : items)

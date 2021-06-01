@@ -54,7 +54,7 @@ public class MyTimeChooser extends JPanel{
 		this.add(buttonVal);
 		
         
-		this.setSize(50,50);		
+		this.setMaximumSize(new Dimension(50,50));		
 		this.setVisible(true);
 		
 	}

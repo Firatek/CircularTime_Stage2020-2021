@@ -2,6 +2,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -24,15 +25,17 @@ public class CircularTimeGUI{
 		frame = new JFrame("Circular Time");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
+		frame.setPreferredSize(new Dimension(900,900));
+		
+		
 
 		this.myTimeChooser = new MyTimeChooser(frame);
 		MyButton myButton = myTimeChooser.getButtonVal();
 		circularTimePanel = new CircularTimePanel(nbLayers, myButton, Calendar.MONTH);
-		
-		frame.add(myTimeChooser, BorderLayout.LINE_END);
+		circularTimePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		circularTimePanel.add(myTimeChooser);
 
-		frame.add(circularTimePanel, BorderLayout.WEST);
-		
+		frame.add(circularTimePanel, BorderLayout.CENTER);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -51,6 +54,6 @@ public class CircularTimeGUI{
 
 
 	public static void main(String[] args){
-		new CircularTimeGUI(4);
+		new CircularTimeGUI(1);
 	}
 }
