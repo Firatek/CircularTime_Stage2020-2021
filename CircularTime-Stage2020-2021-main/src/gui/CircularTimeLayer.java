@@ -75,7 +75,9 @@ public class CircularTimeLayer{
 	}
 	
 	public String makeCond(int rankSelected, int formatLayer, int month) {
-		String cond = "";
+		String cond = createQueryField("YEAR");
+		int year = myButton.getYearStart() + rank;
+		cond = cond.concat(String.valueOf(year));
 		switch(formatLayer) {
 			case Calendar.DAY_OF_MONTH :
 				cond = createQueryField("MONTH");
