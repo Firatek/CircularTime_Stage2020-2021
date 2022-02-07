@@ -16,7 +16,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Properties;
 
-import com.mysql.jdbc.SingleByteCharsetConverter;
 
 import gui.CircularTimeGUI;
 import gui.CircularTimeItem;
@@ -26,7 +25,7 @@ import gui.MyButton;
 
 public class Database {
 	public static final String TABLE_NAME = "elec4Mois";
-	public static final String CONN = "jdbc:mysql://localhost:3306/donneeStage";
+	public static final String CONN = "jdbc:mysql://localhost:3306/donneeStage?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 	public static final String USER_PS = "root";
 	public static final int NO_SELECT = -1;
 	

@@ -37,7 +37,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 import bdd.Database;
 
-public class CircularTimePanel extends JLayeredPane implements MouseInputListener{
+public class CircularTimePanel extends JPanel implements MouseInputListener{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 800;
@@ -74,7 +74,6 @@ public class CircularTimePanel extends JLayeredPane implements MouseInputListene
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		
-		add(txtPane, 1);
 		
 	}
 	

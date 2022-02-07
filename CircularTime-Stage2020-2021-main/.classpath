@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/amaur/Downloads/mysql-connector.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amaur/OneDrive/Documents/eclipse-workspace/CircularTime-Stage2020-2021-main.zip_expanded/CircularTime-Stage2020-2021-main/mysql-connector-java-8.0.22.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

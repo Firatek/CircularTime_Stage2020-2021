@@ -106,7 +106,9 @@ public class TextPanel extends Panel {
         return new DateFormatSymbols().getMonths()[month-1];
     }
 
-    public void paint(Graphics g){    
+    /*
+     * NOT WORKING CURRENTLY
+     * public void paint(Graphics g){    
         Font f = new Font("Verdana Ref",Font.BOLD,15);
     	Graphics2D g2d = (Graphics2D) g;
     	g2d.setFont(f);
@@ -130,9 +132,8 @@ public class TextPanel extends Panel {
         	drawStringCenteredAtAngle(g2d, CircularTimePanel.WIDTH/2.0, CircularTimePanel.HEIGHT/2.0, CircularTimePanel.HEIGHT/2.0 , angle, txt);
         	drawCurvedStringCenteredAtAngle(g2d, CircularTimePanel.WIDTH/2.0, CircularTimePanel.HEIGHT/2.0, (CircularTimePanel.HEIGHT)/2.0 , angle, txt);
 
-    	}
+    	}**/
 
     	
     }
 
-}

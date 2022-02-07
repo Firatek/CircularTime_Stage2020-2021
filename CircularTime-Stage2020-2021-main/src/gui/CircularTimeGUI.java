@@ -31,7 +31,7 @@ public class CircularTimeGUI{
 
 		this.myTimeChooser = new MyTimeChooser(frame);
 		MyButton myButton = myTimeChooser.getButtonVal();
-		circularTimePanel = new CircularTimePanel(nbLayers, myButton, Calendar.MONTH);
+		circularTimePanel = new CircularTimePanel(nbLayers, myButton, 0);
 		circularTimePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		circularTimePanel.add(myTimeChooser);
 
@@ -42,9 +42,6 @@ public class CircularTimeGUI{
 	}
 	
 	
-	
-
-
 
 	public JFrame getFrame() {
 		return this.frame;
